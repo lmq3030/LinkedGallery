@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/pennphoto" xmlns:tns="http://www.example.org/pennphoto" elementFormDefault="qualified">
+
+    <complexType name="studentType">
+    	<complexContent>
+    		<extension base="tns:personType">
+    		<sequence>
+    			<!--  More here -->
+    			<element name="currentyear" type="int"></element>
+    			<element name="major" type="string"></element>
+    		</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+	
+	
+    <complexType name="professorType">
+    	<complexContent>
+    		<extension base="tns:personType">
+    		<sequence>
+    			<!--  More here -->
+    			<element name="room_no" type="string"></element>
+    			<element name="reaserchArea" type="string"></element>
+    			<element name="title" type="string"
+    				maxOccurs="unbounded" minOccurs="1">
+    			</element>
+    		</sequence>
+    		</extension>
+    	</complexContent>
+    </complexType>
+
+	
+    <complexType name="personType">
+    	<sequence>
+    		<element name="userid" type="int">
+    			<key name="id">
+    				<selector xpath="id" />
+    				<field xpath="id/text()"></field>
+    			</key>
+    		</element>
+    		<element name="first_name" type="string"></element>
+    		<element name="last_name" type="string"></element>
+    		<element name="email" type="string"></element>
+    		<element name="birth_date" type="date"></element>
+    		<element name="gender" type="string"></element>
+    		<element name="address" type="string" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    		<element name="password" type="string"></element>
+    	</sequence>
+    </complexType>
+      
+
+    <complexType name="photoType">
+    	<sequence>
+    		<element name="pid" type="int" maxOccurs="1" minOccurs="1"></element>
+    		<element name="url" type="string"></element>
+    		<element name="ownerid" type="int" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="circleType">
+    	<sequence>
+    		<element name="circleid" type="int"></element>
+    		<element name="circle_name" type="string"></element>
+    		<element name="ownerid" type="int"
+    			maxOccurs="unbounded" minOccurs="1">
+    		</element>
+    	</sequence>
+    </complexType>
+	
+	
+    <complexType name="adviseType">
+    	<sequence>
+    		<element name="stuid" type="int"></element>
+    		<element name="staffid" type="int"></element>
+    		<element name="year" type="int"></element>
+    	</sequence>
+    </complexType>
+
+	
+    <complexType name="phototagType">
+    	<sequence>
+    		<element name="pid" type="int"></element>
+    		<element name="userid" type="int"></element>
+    		<element name="keywords" type="string"></element>
+    	</sequence>
+    </complexType>
+
+	
+    <complexType name="rateType">
+    	<sequence>
+    		<element name="userid" type="int"></element>
+    		<element name="pid" type="int"></element>
+    		<element name="score" type="double"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="acdemicInstitutionType">
+    	<sequence>
+    		<element name="instid" type="int"></element>
+    		<element name="name" type="string"></element>
+    	</sequence>
+    </complexType>
+
+	
+    <complexType name="friendsType">
+    	<sequence>
+    		<element name="userid" type="int"></element>
+    		<element name="friend_id" type="int"></element>
+    		<element name="circleid" type="int"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="photoviseveryType">
+    	<sequence>
+    		<element name="pid" type="int"></element>
+    		<element name="isEveryone" type="string"></element>
+    	</sequence>
+    </complexType>
+
+	
+    <complexType name="photoviscircleType">
+    	<sequence>
+    		<element name="pid" type="int"></element>
+    		<element name="circleid" type="int"></element>
+    	</sequence>
+    </complexType>
+
+	
+    <complexType name="photovisfriendType">
+    	<sequence>
+    		<element name="pid" type="int"></element>
+    		<element name="userid" type="int"></element>
+    	</sequence>
+    </complexType>
+
+	
+    <complexType name="institutionattType">
+    	<sequence>
+    		<element name="userid" type="int"></element>
+    		<element name="instid" type="int"></element>
+    		<element name="start_time" type="date"></element>
+    		<element name="finish_time" type="date"></element>
+    	</sequence>
+    </complexType>
+
+	
+    <complexType name="interestType">
+    	<sequence>
+    		<element name="interestid" type="int"></element>
+    		<element name="interestname" type="string"></element>
+    	</sequence>
+    </complexType>
+
+	
+    <complexType name="userinterestType">
+    	<sequence>
+    		<element name="userid" type="int"></element>
+            <element name="interestid" type="int"></element>
+        </sequence>
+    </complexType>
+	
+	<element name="PennPhoto">
+		<complexType>
+			<sequence>
+				<element name="person" type="personType" maxOccurs="unbounded"/>
+				<element name="photo" type="photoType" maxOccurs="unbounded"/>
+				<element name="circle" type="circleType" maxOccurs="unbounded"/>
+				<element name="advise" type="adviseType" maxOccurs="unbounded"/>
+				<element name="phototag" type="phototagType" maxOccurs="unbounded"/>
+				<element name="rate" type="rateType" maxOccurs="unbounded"/>
+				<element name="acdemicInstitution" type="acdemicInstitutionType" maxOccurs="unbounded"/>
+				<element name="friends" type="friendsType" maxOccurs="unbounded"/>
+				<element name="photovisevery" type="photoviseveryType" maxOccurs="unbounded"/>
+				<element name="photoviscircle" type="photoviscircleType" maxOccurs="unbounded"/>
+				<element name="photovisfriend" type="photovisfriendType" maxOccurs="unbounded"/>
+				<element name="institutionatt" type="institutionattType" maxOccurs="unbounded"/>
+				<element name="interest" type="interestType" maxOccurs="unbounded"/>
+				<element name="userinterest" type="userinterestType" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+		<key name="PK_person">
+                  <xs:selector xpath=".//person"/>
+                  <xs:field xpath="userid"/>
+        </key>
+		<key name="PK_photo">
+                  <xs:selector xpath=".//photo"/>
+                  <xs:field xpath="pid"/>
+        </key>
+		<key name="PK_circle">
+                  <xs:selector xpath=".//circle"/>
+                  <xs:field xpath="circleid"/>
+        </key>
+		<key name="PK_advise">
+                  <xs:selector xpath=".//person"/>
+                  <xs:field xpath="stuid"/>
+				  <xs:field xpath="staffid"/>
+				  <xs:field xpath="year"/>
+        </key>
+		<key name="PK_phototag">
+                  <xs:selector xpath=".//phototag"/>
+                  <xs:field xpath="pid"/>
+				  <xs:field xpath="userid"/>
+        </key>
+		<key name="PK_rate">
+                  <xs:selector xpath=".//rate"/>
+                  <xs:field xpath="pid"/>
+				  <xs:field xpath="userid"/>
+        </key>
+		<key name="PK_acdemicInstitution">
+                  <xs:selector xpath=".//acdemicInstitution"/>
+                  <xs:field xpath="instid"/>
+        </key>
+		<key name="PK_friends">
+                  <xs:selector xpath=".//friends"/>
+                  <xs:field xpath="userid"/>
+				  <xs:field xpath="friend_id"/>
+				  <xs:field xpath="circleid"/>
+        </key>
+		<key name="PK_photovisevery">
+                  <xs:selector xpath=".//photovisevery"/>
+                  <xs:field xpath="pid"/>
+				  <xs:field xpath="isEveryone"/>
+        </key>
+		<key name="PK_photoviscircle">
+                  <xs:selector xpath=".//photoviscircle"/>
+                  <xs:field xpath="pid"/>
+				  <xs:field xpath="circleid"/>
+        </key>
+		<key name="PK_photovisfriend">
+                  <xs:selector xpath=".//photovisfriend"/>
+                  <xs:field xpath="pid"/>
+				  <xs:field xpath="circleid"/>
+        </key>
+		<key name="PK_institutionatt">
+                  <xs:selector xpath=".//institutionatt"/>
+                  <xs:field xpath="userid"/>
+				  <xs:field xpath="instid"/>
+        </key>
+		<key name="PK_interest">
+                  <xs:selector xpath=".//interest"/>
+                  <xs:field xpath="interestid"/>
+        </key>
+		<key name="PK_userinterest">
+                  <xs:selector xpath=".//userinterest"/>
+                  <xs:field xpath="userid"/>
+				  <xs:field xpath="interestid"/>
+        </key>
+		
+		<keyref name="FK_photo_ownerid" refer="PK_person">
+			<selector xpath=".//photo"/>
+			<field xpath="ownerid"/>
+		</keyref> 
+		
+		<keyref name="FK_circle_ownerid" refer="PK_person">
+			<selector xpath=".//circle"/>
+			<field xpath="ownerid"/>
+		</keyref> 
+		
+		<keyref name="FK_advise_stuid" refer="PK_person">
+			<selector xpath=".//advise"/>
+			<field xpath="stuid"/>
+		</keyref> 
+		
+		<keyref name="FK_advise_staffid" refer="PK_person">
+			<selector xpath=".//advise"/>
+			<field xpath="staffid"/>
+		</keyref> 
+		
+		<keyref name="FK_rate_pid" refer="PK_photo">
+			<selector xpath=".//rate"/>
+			<field xpath="pid"/>
+		</keyref> 
+		
+		<keyref name="FK_rate_userid" refer="PK_person">
+			<selector xpath=".//circle"/>
+			<field xpath="userid"/>
+		</keyref> 
+		
+		<keyref name="FK_friends_userid" refer="PK_person">
+			<selector xpath=".//friends"/>
+			<field xpath="userid"/>
+		</keyref> 
+		
+		<keyref name="FK_friends_userid" refer="PK_person">
+			<selector xpath=".//friends"/>
+			<field xpath="friend_id"/>
+		</keyref> 
+		
+		<keyref name="FK_friends_circleid" refer="PK_circle">
+			<selector xpath=".//friends"/>
+			<field xpath="circleid"/>
+		</keyref>
+		
+		<keyref name="FK_photovisevery_pid" refer="PK_photo">
+			<selector xpath=".//photovisevery"/>
+			<field xpath="pid"/>
+		</keyref>
+		
+		<keyref name="FK_photoviscircle_pid" refer="PK_photo">
+			<selector xpath=".//photoviscircle"/>
+			<field xpath="pid"/>
+		</keyref>
+		
+		<keyref name="FK_photoviscircle_circleid" refer="PK_circle">
+			<selector xpath=".//photoviscircle"/>
+			<field xpath="circleid"/>
+		</keyref>
+		
+		<keyref name="FK_photovisfriend_pid" refer="PK_photo">
+			<selector xpath=".//photovisfriend"/>
+			<field xpath="pid"/>
+		</keyref>
+		
+		<keyref name="FK_photovisfriend_userid" refer="PK_person">
+			<selector xpath=".//photovisfriend"/>
+			<field xpath="userid"/>
+		</keyref>
+		
+		<keyref name="FK_institutionatt_userid" refer="PK_person">
+			<selector xpath=".//institutionatt"/>
+			<field xpath="userid"/>
+		</keyref>
+		
+		<keyref name="FK_institutionatt_instid" refer="PK_acdemicInstitution">
+			<selector xpath=".//institutionatt"/>
+			<field xpath="instid"/>
+		</keyref>
+		
+		<keyref name="FK_userinterest_userid" refer="PK_person">
+			<selector xpath=".//userinterest"/>
+			<field xpath="userid"/>
+		</keyref>
+		
+		<keyref name="FK_userinterest_interestid" refer="PK_interest">
+			<selector xpath=".//userinterest"/>
+			<field xpath="interestid"/>
+		</keyref>
+	</element>
+</schema>
