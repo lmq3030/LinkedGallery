@@ -1,0 +1,7 @@
+
+<tns:PennPhoto xmlns:tns="http://www.example.org/pennphoto">
+	<tns:interest>
+		<tns:interestid> 1 </tns:interestid>
+		<tns:interestname>sleeping</tns:interestname>
+	</tns:interest>
+</tns:PennPhoto>

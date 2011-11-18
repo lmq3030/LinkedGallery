@@ -165,20 +165,20 @@
 	<element name="PennPhoto">
 		<complexType>
 			<sequence>
-				<element name="person" type="personType" maxOccurs="unbounded"/>
-				<element name="photo" type="photoType" maxOccurs="unbounded"/>
-				<element name="circle" type="circleType" maxOccurs="unbounded"/>
-				<element name="advise" type="adviseType" maxOccurs="unbounded"/>
-				<element name="phototag" type="phototagType" maxOccurs="unbounded"/>
-				<element name="rate" type="rateType" maxOccurs="unbounded"/>
-				<element name="acdemicInstitution" type="acdemicInstitutionType" maxOccurs="unbounded"/>
-				<element name="friends" type="friendsType" maxOccurs="unbounded"/>
-				<element name="photovisevery" type="photoviseveryType" maxOccurs="unbounded"/>
-				<element name="photoviscircle" type="photoviscircleType" maxOccurs="unbounded"/>
-				<element name="photovisfriend" type="photovisfriendType" maxOccurs="unbounded"/>
-				<element name="institutionatt" type="institutionattType" maxOccurs="unbounded"/>
-				<element name="interest" type="interestType" maxOccurs="unbounded"/>
-				<element name="userinterest" type="userinterestType" maxOccurs="unbounded"/>
+				<element name="person" type="tns:personType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="photo" type="tns:photoType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="circle" type="tns:circleType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="advise" type="tns:adviseType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="phototag" type="tns:phototagType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="rate" type="tns:rateType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="acdemicInstitution" type="tns:acdemicInstitutionType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="friends" type="tns:friendsType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="photovisevery" type="tns:photoviseveryType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="photoviscircle" type="tns:photoviscircleType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="photovisfriend" type="tns:photovisfriendType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="institutionatt" type="tns:institutionattType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="interest" type="tns:interestType" minOccurs="0" maxOccurs="unbounded"/>
+				<element name="userinterest" type="tns:userinterestType" minOccurs="0" maxOccurs="unbounded"/>
 			</sequence>
 		</complexType>
 		<key name="PK_person">
@@ -249,92 +249,92 @@
 				  <field xpath="interestid"/>
         </key>
 		
-		<keyref name="FK_photo_ownerid" refer="PK_person">
+		<keyref name="FK_photo_ownerid" refer="tns:PK_person">
 			<selector xpath=".//photo"/>
 			<field xpath="ownerid"/>
 		</keyref> 
 		
-		<keyref name="FK_circle_ownerid" refer="PK_person">
+		<keyref name="FK_circle_ownerid" refer="tns:PK_person">
 			<selector xpath=".//circle"/>
 			<field xpath="ownerid"/>
 		</keyref> 
 		
-		<keyref name="FK_advise_stuid" refer="PK_person">
+		<keyref name="FK_advise_stuid" refer="tns:PK_person">
 			<selector xpath=".//advise"/>
 			<field xpath="stuid"/>
 		</keyref> 
 		
-		<keyref name="FK_advise_staffid" refer="PK_person">
+		<keyref name="FK_advise_staffid" refer="tns:PK_person">
 			<selector xpath=".//advise"/>
 			<field xpath="staffid"/>
 		</keyref> 
 		
-		<keyref name="FK_rate_pid" refer="PK_photo">
+		<keyref name="FK_rate_pid" refer="tns:PK_photo">
 			<selector xpath=".//rate"/>
 			<field xpath="pid"/>
 		</keyref> 
 		
-		<keyref name="FK_rate_userid" refer="PK_person">
+		<keyref name="FK_rate_userid" refer="tns:PK_person">
 			<selector xpath=".//circle"/>
 			<field xpath="userid"/>
 		</keyref> 
 		
-		<keyref name="FK_friends_userid" refer="PK_person">
+		<keyref name="FK_friends_userid" refer="tns:PK_person">
 			<selector xpath=".//friends"/>
 			<field xpath="userid"/>
 		</keyref> 
 		
-		<keyref name="FK_friends_friend_id" refer="PK_person">
+		<keyref name="FK_friends_friend_id" refer="tns:PK_person">
 			<selector xpath=".//friends"/>
 			<field xpath="friend_id"/>
 		</keyref> 
 		
-		<keyref name="FK_friends_circleid" refer="PK_circle">
+		<keyref name="FK_friends_circleid" refer="tns:PK_circle">
 			<selector xpath=".//friends"/>
 			<field xpath="circleid"/>
 		</keyref>
 		
-		<keyref name="FK_photovisevery_pid" refer="PK_photo">
+		<keyref name="FK_photovisevery_pid" refer="tns:PK_photo">
 			<selector xpath=".//photovisevery"/>
 			<field xpath="pid"/>
 		</keyref>
 		
-		<keyref name="FK_photoviscircle_pid" refer="PK_photo">
+		<keyref name="FK_photoviscircle_pid" refer="tns:PK_photo">
 			<selector xpath=".//photoviscircle"/>
 			<field xpath="pid"/>
 		</keyref>
 		
-		<keyref name="FK_photoviscircle_circleid" refer="PK_circle">
+		<keyref name="FK_photoviscircle_circleid" refer="tns:PK_circle">
 			<selector xpath=".//photoviscircle"/>
 			<field xpath="circleid"/>
 		</keyref>
 		
-		<keyref name="FK_photovisfriend_pid" refer="PK_photo">
+		<keyref name="FK_photovisfriend_pid" refer="tns:PK_photo">
 			<selector xpath=".//photovisfriend"/>
 			<field xpath="pid"/>
 		</keyref>
 		
-		<keyref name="FK_photovisfriend_userid" refer="PK_person">
+		<keyref name="FK_photovisfriend_userid" refer="tns:PK_person">
 			<selector xpath=".//photovisfriend"/>
 			<field xpath="userid"/>
 		</keyref>
 		
-		<keyref name="FK_institutionatt_userid" refer="PK_person">
+		<keyref name="FK_institutionatt_userid" refer="tns:PK_person">
 			<selector xpath=".//institutionatt"/>
 			<field xpath="userid"/>
 		</keyref>
 		
-		<keyref name="FK_institutionatt_instid" refer="PK_acdemicInstitution">
+		<keyref name="FK_institutionatt_instid" refer="tns:PK_acdemicInstitution">
 			<selector xpath=".//institutionatt"/>
 			<field xpath="instid"/>
 		</keyref>
 		
-		<keyref name="FK_userinterest_userid" refer="PK_person">
+		<keyref name="FK_userinterest_userid" refer="tns:PK_person">
 			<selector xpath=".//userinterest"/>
 			<field xpath="userid"/>
 		</keyref>
 		
-		<keyref name="FK_userinterest_interestid" refer="PK_interest">
+		<keyref name="FK_userinterest_interestid" refer="tns:PK_interest">
 			<selector xpath=".//userinterest"/>
 			<field xpath="interestid"/>
 		</keyref>
