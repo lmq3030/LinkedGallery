@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/pennphoto" xmlns:tns="http://www.example.org/pennphoto" elementFormDefault="qualified">
- 
+
     <complexType name="studentType">
     	<complexContent>
     		<extension base="tns:personType">
@@ -33,10 +33,6 @@
     <complexType name="personType">
     	<sequence>
     		<element name="userid" type="int">
-    			<key name="id">
-    				<selector xpath="id" />
-    				<field xpath="id/text()"></field>
-    			</key>
     		</element>
     		<element name="first_name" type="string"></element>
     		<element name="last_name" type="string"></element>
@@ -186,71 +182,71 @@
 			</sequence>
 		</complexType>
 		<key name="PK_person">
-                  <xs:selector xpath=".//person"/>
-                  <xs:field xpath="userid"/>
+                  <selector xpath=".//person"/>
+                  <field xpath="userid"/>
         </key>
 		<key name="PK_photo">
-                  <xs:selector xpath=".//photo"/>
-                  <xs:field xpath="pid"/>
+                  <selector xpath=".//photo"/>
+                  <field xpath="pid"/>
         </key>
 		<key name="PK_circle">
-                  <xs:selector xpath=".//circle"/>
-                  <xs:field xpath="circleid"/>
+                  <selector xpath=".//circle"/>
+                  <field xpath="circleid"/>
         </key>
 		<key name="PK_advise">
-                  <xs:selector xpath=".//person"/>
-                  <xs:field xpath="stuid"/>
-				  <xs:field xpath="staffid"/>
-				  <xs:field xpath="year"/>
+                  <selector xpath=".//person"/>
+                  <field xpath="stuid"/>
+				  <field xpath="staffid"/>
+				  <field xpath="year"/>
         </key>
 		<key name="PK_phototag">
-                  <xs:selector xpath=".//phototag"/>
-                  <xs:field xpath="pid"/>
-				  <xs:field xpath="userid"/>
+                  <selector xpath=".//phototag"/>
+                  <field xpath="pid"/>
+				  <field xpath="userid"/>
         </key>
 		<key name="PK_rate">
-                  <xs:selector xpath=".//rate"/>
-                  <xs:field xpath="pid"/>
-				  <xs:field xpath="userid"/>
+                  <selector xpath=".//rate"/>
+                  <field xpath="pid"/>
+				  <field xpath="userid"/>
         </key>
 		<key name="PK_acdemicInstitution">
-                  <xs:selector xpath=".//acdemicInstitution"/>
-                  <xs:field xpath="instid"/>
+                  <selector xpath=".//acdemicInstitution"/>
+                  <field xpath="instid"/>
         </key>
 		<key name="PK_friends">
-                  <xs:selector xpath=".//friends"/>
-                  <xs:field xpath="userid"/>
-				  <xs:field xpath="friend_id"/>
-				  <xs:field xpath="circleid"/>
+                  <selector xpath=".//friends"/>
+                  <field xpath="userid"/>
+				  <field xpath="friend_id"/>
+				  <field xpath="circleid"/>
         </key>
 		<key name="PK_photovisevery">
-                  <xs:selector xpath=".//photovisevery"/>
-                  <xs:field xpath="pid"/>
-				  <xs:field xpath="isEveryone"/>
+                  <selector xpath=".//photovisevery"/>
+                  <field xpath="pid"/>
+				  <field xpath="isEveryone"/>
         </key>
 		<key name="PK_photoviscircle">
-                  <xs:selector xpath=".//photoviscircle"/>
-                  <xs:field xpath="pid"/>
-				  <xs:field xpath="circleid"/>
+                  <selector xpath=".//photoviscircle"/>
+                  <field xpath="pid"/>
+				  <field xpath="circleid"/>
         </key>
 		<key name="PK_photovisfriend">
-                  <xs:selector xpath=".//photovisfriend"/>
-                  <xs:field xpath="pid"/>
-				  <xs:field xpath="circleid"/>
+                  <selector xpath=".//photovisfriend"/>
+                  <field xpath="pid"/>
+				  <field xpath="circleid"/>
         </key>
 		<key name="PK_institutionatt">
-                  <xs:selector xpath=".//institutionatt"/>
-                  <xs:field xpath="userid"/>
-				  <xs:field xpath="instid"/>
+                  <selector xpath=".//institutionatt"/>
+                  <field xpath="userid"/>
+				  <field xpath="instid"/>
         </key>
 		<key name="PK_interest">
-                  <xs:selector xpath=".//interest"/>
-                  <xs:field xpath="interestid"/>
+                  <selector xpath=".//interest"/>
+                  <field xpath="interestid"/>
         </key>
 		<key name="PK_userinterest">
-                  <xs:selector xpath=".//userinterest"/>
-                  <xs:field xpath="userid"/>
-				  <xs:field xpath="interestid"/>
+                  <selector xpath=".//userinterest"/>
+                  <field xpath="userid"/>
+				  <field xpath="interestid"/>
         </key>
 		
 		<keyref name="FK_photo_ownerid" refer="PK_person">
@@ -288,7 +284,7 @@
 			<field xpath="userid"/>
 		</keyref> 
 		
-		<keyref name="FK_friends_userid" refer="PK_person">
+		<keyref name="FK_friends_friend_id" refer="PK_person">
 			<selector xpath=".//friends"/>
 			<field xpath="friend_id"/>
 		</keyref> 
