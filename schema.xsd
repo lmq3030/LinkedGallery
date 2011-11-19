@@ -4,8 +4,6 @@
     <complexType name="studentType">
     	<complexContent>
     		<extension base="tns:personType">
-    		<sequence>
-    			<!--  More here -->
     			<element name="currentyear" type="int"></element>
     			<element name="major" type="string"></element>
     		</sequence>
@@ -18,7 +16,6 @@
     	<complexContent>
     		<extension base="tns:personType">
     		<sequence>
-    			<!--  More here -->
     			<element name="room_no" type="string"></element>
     			<element name="reaserchArea" type="string"></element>
     			<element name="title" type="string"
